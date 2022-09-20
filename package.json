@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "description": "This is storybook addon that enables us to highlight custom widget components.",
   "keywords": [
-    "storybook-addons", "storybook-addons"
+    "storybook-addons",
+    "storybook-addons"
   ],
   "repository": {
     "type": "git",
@@ -81,8 +82,21 @@
   "storybook": {
     "displayName": "Storybook Components Preview",
     "supportedFrameworks": [
-      "react", "vue", "angular", "web-components", "ember", "html", "svelte", "preact", "react-native"
+      "react",
+      "vue",
+      "angular",
+      "web-components",
+      "ember",
+      "html",
+      "svelte",
+      "preact",
+      "react-native"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
+  },
+  "dependencies": {
+    "@emotion/css": "^11.10.0",
+    "@storybook/addon-links": "^6.5.12",
+    "tippy.js": "^6.3.7"
   }
 }
