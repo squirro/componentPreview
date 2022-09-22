@@ -97,7 +97,7 @@ var withGlobals = function withGlobals(StoryFn, context) {
       updateArgs = _useArgs2[1];
 
   var widgetLocation = function widgetLocation() {
-    var index = context.kind.lastIndexOf("/") - 1;
+    var index = context.kind.lastIndexOf("/");
     return context.kind.substring(0, index);
   };
 

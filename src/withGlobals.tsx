@@ -67,7 +67,7 @@ export const withGlobals: DecoratorFunction = (StoryFn, context) => {
   const [args, updateArgs] = useArgs();
 
   const widgetLocation = () => {
-    const index = context.kind.lastIndexOf("/") - 1;
+    const index = context.kind.lastIndexOf("/");
       return context.kind.substring(0, index);
   }
 
