@@ -77,8 +77,9 @@ var wrapComponentsWithPreviewWrapper = function wrapComponentsWithPreviewWrapper
   var wrappedDeps = {};
   console.log(componentDeps);
   Object.keys(componentDeps).forEach(function (componentName) {
-    wrappedDeps[componentName] = function (props, test) {
-      return ComponentPreviewWrapper(componentDeps[componentName](props), componentName, widgetLocation);
+    wrappedDeps[componentName] = function (props) {
+      var children = typeof componentDeps[componentName] === 'function' ? componentDeps[componentName](props) : componentDeps[componentName];
+      return ComponentPreviewWrapper(children, componentName, widgetLocation);
     };
   });
   return wrappedDeps;
@@ -88,8 +89,6 @@ var withGlobals = function withGlobals(StoryFn, context) {
   var _useGlobals = (0, _addons.useGlobals)(),
       _useGlobals2 = _slicedToArray(_useGlobals, 1),
       outlineActive = _useGlobals2[0].outlineActive;
-
-  var emit = (0, _addons.useChannel)({});
 
   var _useArgs = (0, _addons.useArgs)(),
       _useArgs2 = _slicedToArray(_useArgs, 2),

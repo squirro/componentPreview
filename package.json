@@ -1,6 +1,6 @@
 {
   "name": "storybook-components-preview",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "This is storybook addon that enables us to highlight custom widget components.",
   "keywords": [
     "storybook-addons",

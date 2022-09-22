@@ -10,7 +10,7 @@ function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "und
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-import { useEffect, useGlobals, useArgs, useChannel } from "@storybook/addons";
+import { useEffect, useGlobals, useArgs } from "@storybook/addons";
 import tippy from "tippy.js";
 import 'tippy.js/dist/tippy.css';
 import { linkTo } from "@storybook/addon-links";
@@ -63,8 +63,9 @@ var wrapComponentsWithPreviewWrapper = function wrapComponentsWithPreviewWrapper
   var wrappedDeps = {};
   console.log(componentDeps);
   Object.keys(componentDeps).forEach(function (componentName) {
-    wrappedDeps[componentName] = function (props, test) {
-      return ComponentPreviewWrapper(componentDeps[componentName](props), componentName, widgetLocation);
+    wrappedDeps[componentName] = function (props) {
+      var children = typeof componentDeps[componentName] === 'function' ? componentDeps[componentName](props) : componentDeps[componentName];
+      return ComponentPreviewWrapper(children, componentName, widgetLocation);
     };
   });
   return wrappedDeps;
@@ -74,8 +75,6 @@ export var withGlobals = function withGlobals(StoryFn, context) {
   var _useGlobals = useGlobals(),
       _useGlobals2 = _slicedToArray(_useGlobals, 1),
       outlineActive = _useGlobals2[0].outlineActive;
-
-  var emit = useChannel({});
 
   var _useArgs = useArgs(),
       _useArgs2 = _slicedToArray(_useArgs, 2),
