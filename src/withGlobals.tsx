@@ -53,8 +53,9 @@ const wrapComponentsWithPreviewWrapper = (componentDeps: any, widgetLocation: st
   const wrappedDeps = {} as any;
   console.log(componentDeps);
   Object.keys(componentDeps).forEach((componentName: string) => {
-    wrappedDeps[componentName] = (props: any, test: any) =>{
-      return ComponentPreviewWrapper(componentDeps[componentName](props), componentName, widgetLocation);
+    wrappedDeps[componentName] = (props: any) =>{
+      const children = typeof componentDeps[componentName] === 'function' ? componentDeps[componentName](props) : componentDeps[componentName];
+      return ComponentPreviewWrapper(children, componentName, widgetLocation);
     }
   });
 
@@ -63,7 +64,6 @@ const wrapComponentsWithPreviewWrapper = (componentDeps: any, widgetLocation: st
 
 export const withGlobals: DecoratorFunction = (StoryFn, context) => {
   const [{ outlineActive }] = useGlobals();
-  const emit = useChannel({});
   const [args, updateArgs] = useArgs();
 
   const widgetLocation = () => {
