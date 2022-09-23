@@ -107,7 +107,6 @@ export var withGlobals = function withGlobals(StoryFn, context) {
       }
     }
 
-    console.log(args);
     setTimeout(function () {
       tippy('[data-tippy-content]');
     }, 0);

@@ -89,8 +89,6 @@ export const withGlobals: DecoratorFunction = (StoryFn, context) => {
         }
       }
 
-      console.log(args);
-
     setTimeout(() => {
       tippy('[data-tippy-content]');
     }, 0);

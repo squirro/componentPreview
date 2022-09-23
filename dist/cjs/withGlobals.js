@@ -121,7 +121,6 @@ var withGlobals = function withGlobals(StoryFn, context) {
       }
     }
 
-    console.log(args);
     setTimeout(function () {
       (0, _tippy["default"])('[data-tippy-content]');
     }, 0);
