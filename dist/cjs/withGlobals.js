@@ -75,11 +75,9 @@ var ComponentPreviewWrapper = function ComponentPreviewWrapper(children, compone
 
 var wrapComponentsWithPreviewWrapper = function wrapComponentsWithPreviewWrapper(componentDeps, widgetLocation) {
   var wrappedDeps = {};
-  console.log(componentDeps);
   Object.keys(componentDeps).forEach(function (componentName) {
     wrappedDeps[componentName] = function (props) {
       var children = typeof componentDeps[componentName] === 'function' ? componentDeps[componentName](props) : componentDeps[componentName].render(props);
-      console.log(componentDeps[componentName]);
       return ComponentPreviewWrapper(children, componentName, widgetLocation);
     };
   });
